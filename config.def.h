@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 2;        /* gaps between windows */
+static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
@@ -68,10 +68,12 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *dmenublt[] = { "~/i3scripts/bluetoothdmenu.sh", NULL };
+static const char *dmenublt[] = { "./i3scripts/bluetoothdmenu.sh", NULL };
+static const char *exitScript[] = { "./i3scripts/exit.sh", NULL };
 static const char *skype[] = { "skypeforlinux", NULL };
 static const char *firefox[] = { "firefox", NULL };
 static const char *android[] = { "android-studio", NULL };
+static const char *ranger[] = { "terminal -e ranger", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -93,6 +95,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_s,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_q,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating,      {0} },
 	//run skype
 	{ MOD1KEY|ControlMask,             XK_s,  spawn, {.v = skype} },
 	//run dmenubluetooth script
@@ -101,6 +104,8 @@ static const Key keys[] = {
 	{ MOD1KEY|ControlMask,             XK_f,  spawn, {.v = firefox} },
 	//run android
 	{ MOD1KEY|ControlMask,             XK_n,  spawn, {.v = android} },
+	//run ranger in terminal
+	{ MOD1KEY|ControlMask,             XK_e,  spawn, {.v = ranger} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -117,7 +122,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,      spawn,           {.v = exitScript} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
 };
 
