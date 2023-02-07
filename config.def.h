@@ -11,11 +11,11 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Ubuntu:weight=bold:size=8:antialias=true:hinting=true",
-                                  	"Hack:size=8:antialias=true:autohint=true",
-                                  	"JoyPixels:size=10:antialias=true:autohint=true"
+static const char *fonts[]          = { "Ubuntu:weight=bold:size=12:antialias=true:hinting=true",
+                                  	"Hack:size=12:antialias=true:autohint=true",
+                                  	"JoyPixels:size=12:antialias=true:autohint=true"
 						     	};
-static const char dmenufont[]       = "monospace:size=10";
+static const char dmenufont[]       = "monospace:size=12";
 static const char col_gray1[]       = "#5294E2";
 static const char col_gray2[]       = "#383C4A";
 static const char col_gray3[]       = "#d7d7d7";
