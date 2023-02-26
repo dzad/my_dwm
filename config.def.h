@@ -16,11 +16,11 @@ static const char *fonts[]          = { "Ubuntu:weight=bold:size=12:antialias=tr
                                   	"JoyPixels:size=12:antialias=true:autohint=true"
 						     	};
 static const char dmenufont[]       = "monospace:size=12";
-static const char col_gray1[]       = "#5294E2";
-static const char col_gray2[]       = "#383C4A";
-static const char col_gray3[]       = "#d7d7d7";
-static const char col_gray4[]       = "#f0f0f0";
-static const char col_cyan[]        = "#005577";
+static const char col_gray1[]       = "#000000";
+static const char col_gray2[]       = "#FAF3E3";
+static const char col_gray3[]       = "#FF9F29";
+static const char col_gray4[]       = "#FF9F29";
+static const char col_cyan[]        = "#1A4D2E";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -76,6 +76,7 @@ static const char *firefox[] = { "firefox", NULL };
 static const char *android[] = { "android-studio", NULL };
 static const char *ranger[] = { "st", "-e", "ranger", NULL };
 static const char *screenshot[] = { "./i3scripts/screenshot.sh", NULL };
+static const char *wifi[] = { "./i3scripts/wifi.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -112,6 +113,8 @@ static const Key keys[] = {
 	{ MOD1KEY,             XK_space,  spawn, {.v = kblayout} },
 	//take screenshot using import from imagemagick package
 	{ MODKEY,             XK_t,  spawn, {.v = screenshot} },
+	//connect to wifi
+	{ MODKEY,             XK_r,  spawn, {.v = wifi} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
