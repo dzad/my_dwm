@@ -77,6 +77,8 @@ static const char *android[] = { "android-studio", NULL };
 static const char *ranger[] = { "st", "-e", "ranger", NULL };
 static const char *screenshot[] = { "./i3scripts/screenshot.sh", NULL };
 static const char *wifi[] = { "./i3scripts/wifi.sh", NULL };
+static const char *quotes[] = { "./zathura_scripts/quotes.sh", "qip", NULL };
+static const char *dual_monitor[] = { "./i3scripts/dual_monitor.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -115,6 +117,10 @@ static const Key keys[] = {
 	{ MODKEY,             XK_t,  spawn, {.v = screenshot} },
 	//connect to wifi
 	{ MODKEY,             XK_r,  spawn, {.v = wifi} },
+	//show quotes from book in pdf
+	{ MODKEY,             XK_m,  spawn, {.v = quotes} },
+	//choose second monitor orientation
+	{ MODKEY,             XK_v,  spawn, {.v = dual_monitor} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -139,8 +145,8 @@ static const Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
