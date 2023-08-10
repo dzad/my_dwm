@@ -79,6 +79,7 @@ static const char *screenshot[] = { "./i3scripts/screenshot.sh", NULL };
 static const char *wifi[] = { "./i3scripts/wifi.sh", NULL };
 static const char *quotes[] = { "./zathura_scripts/quotes.sh", "qip", NULL };
 static const char *dual_monitor[] = { "./i3scripts/dual_monitor.sh", NULL };
+static const char *blt_battery[] = { "./i3scripts/bluetooth_battery.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -121,6 +122,8 @@ static const Key keys[] = {
 	{ MODKEY,             XK_m,  spawn, {.v = quotes} },
 	//choose second monitor orientation
 	{ MODKEY,             XK_v,  spawn, {.v = dual_monitor} },
+	//run dmenubluetooth script
+	{ MOD1KEY|ControlMask,             XK_bracketleft,  spawn, {.v = blt_battery} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
