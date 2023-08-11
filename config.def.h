@@ -37,6 +37,10 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ NULL,       NULL,       NULL,       0,            False,       -1 },
+	{ "firefox",       NULL,       NULL,       1,            False,       -1 },
+	{ "jetbrains-studio",       NULL,       NULL,       1<<1,            False,       -1 },
+	{NULL,       "skype",NULL,       1<<2,            False,       -1 },
+	{NULL,NULL ,"Android Emulator",       1<<4,            True,       -1 },
 };
 
 /* layout(s) */
